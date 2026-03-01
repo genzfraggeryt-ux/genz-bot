@@ -16,10 +16,7 @@ const client = new Client({
 });
 
 const PREFIX = ".";
-
-client.once("ready", () => {
-  console.log(`✅ Logged in as ${client.user.tag}`);
-});
+;
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
@@ -179,7 +176,13 @@ app.listen(3000, () => {
   console.log("Web server running...");
 });
 
+client.once("ready", () => {
+  console.log(`Logged in as ${client.user.tag}`);
+});
+
+
 client.login(process.env.TOKEN);
+
 
 
 
