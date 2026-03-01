@@ -158,8 +158,18 @@ if (command === "renamechannal") {
     )
   );
 }
+client.on("messageCreate", async (message) => {
+  if (message.author.bot) return;
+  if (!message.content.startsWith(PREFIX)) return;
 
-}); // closes client.on("messageCreate")
+  const args = message.content.slice(PREFIX.length).trim().split(/ +/);
+  const command = args.shift().toLowerCase();
+
+  // your commands go here
+
+}); // <-- THIS CLOSES messageCreate PROPERLY
+
+
 
 // ===== Express Keep Alive (Render) =====
 const express = require("express");
@@ -173,12 +183,15 @@ app.listen(3000, () => {
   console.log("Web server running...");
 });
 
+
+
 // ===== Bot Ready + Login =====
 client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
 client.login(process.env.TOKEN);
+
 
 
 
