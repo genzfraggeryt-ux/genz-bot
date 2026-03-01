@@ -159,12 +159,9 @@ if (command === "renamechannal") {
   );
 }
 
-}); // ← closes client.on("messageCreate")
+}); // closes client.on("messageCreate")
 
-// ======================
-// Express Keep Alive (Render)
-// ======================
-
+// ===== Express Keep Alive (Render) =====
 const express = require("express");
 const app = express();
 
@@ -176,14 +173,12 @@ app.listen(3000, () => {
   console.log("Web server running...");
 });
 
+// ===== Bot Ready + Login =====
 client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
-console.log("TOKEN:", process.env.TOKEN ? "Loaded" : "NOT FOUND");
-client.login(process.env.TOKEN)
-  .then(() => console.log("Login attempt sent"))
-  .catch(err => console.error("Login error:", err));
+client.login(process.env.TOKEN);
 
 
 
