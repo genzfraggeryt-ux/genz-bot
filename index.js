@@ -180,8 +180,11 @@ client.once("ready", () => {
   console.log(`Logged in as ${client.user.tag}`);
 });
 
+console.log("TOKEN:", process.env.TOKEN ? "Loaded" : "NOT FOUND");
+client.login(process.env.TOKEN)
+  .then(() => console.log("Login attempt sent"))
+  .catch(err => console.error("Login error:", err));
 
-client.login(process.env.TOKEN);
 
 
 
