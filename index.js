@@ -158,19 +158,8 @@ if (command === "renamechannal") {
     )
   );
 }
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(PREFIX)) return;
-
-  const args = message.content.slice(PREFIX.length).trim().split(/ +/);
-  const command = args.shift().toLowerCase();
-
-  // your commands go here
-
-}); // <-- THIS CLOSES messageCreate PROPERLY
-
-
-
+  
+}); // closes main messageCreate
 // ===== Express Keep Alive (Render) =====
 const express = require("express");
 const app = express();
@@ -191,6 +180,7 @@ client.once("ready", () => {
 });
 
 client.login(process.env.TOKEN);
+
 
 
 
