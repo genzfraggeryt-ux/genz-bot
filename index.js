@@ -12,49 +12,6 @@ const client = new Client({
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
     GatewayIntentBits.GuildMembers
-  ]
-});
-
-const PREFIX = ".";
-;
-
-client.on("messageCreate", async (message) => {
-  if (message.author.bot) return;
-  if (!message.content.startsWith(PREFIX)) return;
-
-  const args = message.content.slice(PREFIX.length).trim().split(/ +/);
-  const command = args.shift().toLowerCase();
-
-  // 🔒 ADMIN CHECK FUNCTION
-  const isAdmin = message.member.permissions.has(
-    PermissionsBitField.Flags.Administrator
-  );
-
-  // ========================
-  // 📜 HELP COMMAND
-  // ========================
-  if (command === "help") {
-    const helpEmbed = new EmbedBuilder()
-      .setTitle("Nuker Bot Xd")
-      .setColor("Red")
-      .setDescription("are all available commands:")
-      .addFields(
-        { name: "💀 .nuke", value: "Nuke Server" },
-        { name: "🧹 .clear <amount>", value: "Delete messages (max 100)." },
-        { name: "🔨 .kick @user", value: "Kick a member." },
-        { name: "🔨 .ban @user", value: "Ban a member." },
-        { name: "📢 .say <text>", value: "Bot says your message." },
-        { name: "💀 .renamechannal", value: "renaming all channal💀 ." },
-      )
-      .setFooter({ text: "Admin only commands are protected." });
-
-    return message.channel.send({ embeds: [helpEmbed] });
-  }
-
-  // ========================
-  // 🔒 ADMIN ONLY COMMANDS
-  // ========================
-  if (!isAdmin) {
     return message.reply("❌ You need Administrator permission.");
   }
 
@@ -176,15 +133,12 @@ app.listen(3000, () => {
 
 // ===== Bot Ready + Login =====
 client.once("ready", () => {
-  console.log(`Logged in as ${client.user.tag}`);
+  console.log("✅ BOT IS ONLINE:", client.user.tag);
 });
 
-client.login(process.env.TOKEN);
+console.log("TOKEN STATUS:", process.env.TOKEN ? "FOUND" : "NOT FOUND");
 
-
-
-
-
-
-
+client.login(process.env.TOKEN)
+  .then(() => console.log("Login request sent to Discord"))
+  .catch(err => console.error("❌ LOGIN ERROR:", err));
 
